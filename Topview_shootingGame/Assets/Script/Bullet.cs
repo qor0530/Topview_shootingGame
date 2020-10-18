@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        transform.position = transform.position + new Vector3(0, 0.1f);
+        transform.position = transform.position + new Vector3(0, 0.15f);
     }
 
     private void OnCollisionEnter(Collision collision)

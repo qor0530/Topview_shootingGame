@@ -17,19 +17,25 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) 
         {
             transform.position = transform.position + new Vector3(-0.1f, 0);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow)|| Input.GetKey(KeyCode.D))
         {
             transform.position = transform.position + new Vector3(0.1f, 0);
         }
         if(bulletTermCount++ >= bulletTerm)
         {
-            var bulletObject = Instantiate(bullet);
-            bulletObject.transform.position = transform.position;
+            Fire(0.3f);
+            Fire(-0.3f);
             bulletTermCount = 0;
         }
+    }
+
+    private void Fire(float x = 0)
+    {
+        var bulletObject = Instantiate(bullet);
+        bulletObject.transform.position = transform.position + new Vector3(x, 0);
     }
 }
