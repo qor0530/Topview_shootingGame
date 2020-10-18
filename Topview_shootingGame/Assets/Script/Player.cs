@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
     public GameObject bullet;
 
-    private int bulletTerm = 0;
+    public int bulletTermCount = 0;
+    public int bulletTerm = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,11 +25,11 @@ public class Player : MonoBehaviour
         {
             transform.position = transform.position + new Vector3(0.1f, 0);
         }
-        if(bulletTerm++ >= 20)
+        if(bulletTermCount++ >= bulletTerm)
         {
             var bulletObject = Instantiate(bullet);
             bulletObject.transform.position = transform.position;
-            bulletTerm = 0;
+            bulletTermCount = 0;
         }
     }
 }
