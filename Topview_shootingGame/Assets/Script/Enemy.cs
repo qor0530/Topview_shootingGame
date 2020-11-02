@@ -26,7 +26,19 @@ public class Enemy : CollisionObject
         Hp -= value;
         if (Hp <= 0)
         {
-            Destroy(gameObject);
+            var destroyEffectPrefab = Resources.Load("Prefab/Explosion") as GameObject;
+            var destroyEffect = Instantiate(destroyEffectPrefab);
+            destroyEffect.transform.position = transform.position;
+            GetComponent<BoxCollider>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+
+            Invoke("Destroyself", 1f);
+            //Destroy(gameObject);
         }
+    }
+
+    private void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }
