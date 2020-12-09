@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
@@ -6,9 +9,9 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 const mysql      = require('mysql');
 const connection = mysql.createConnection({
-  host     : 'localhost',    // 호스트 주소
-  user     : 'root',           // mysql user
-  password : 'dkssudgktpdydkssudgktpdy',       // mysql password
+  host     : process.env.DB_HOST,
+  user     : process.env.DB_USERNAME,           // mysql user
+  password : process.env.DB_PASSWORD,       // mysql password
   database : 'top_shooting'         // mysql 데이터베이스
 });
 connection.connect();
@@ -54,3 +57,5 @@ app.post('/registerScore', (req, res, next) => {
 app.listen(port, () => {
     console.log(`server is listening at localhost:${port}`);
 });
+
+console.log("노드몬?노드몬?노드몬?노드몬?노드몬?노드몬?노드몬?노드몬?ㅌㅌ");
