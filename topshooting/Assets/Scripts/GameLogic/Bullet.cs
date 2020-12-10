@@ -10,7 +10,7 @@ public class Bullet : CollisionObject
         MovementVector = new Vector2(0, 0.1f);
     }
 
-    protected override void OnCollisionEnter(Collision collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Wall")
         {

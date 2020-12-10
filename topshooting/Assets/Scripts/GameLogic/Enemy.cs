@@ -20,7 +20,7 @@ public class Enemy : CollisionObject
         GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
-    protected override void OnCollisionEnter(Collision collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Player>() != null)
         {
@@ -41,7 +41,7 @@ public class Enemy : CollisionObject
         {
             var destroyEffectPrefab = Resources.Load("Prefabs/Explosion") as GameObject;
             var destroyEffect = Instantiate(destroyEffectPrefab, transform);
-            GetComponent<BoxCollider>().enabled = false;
+            GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;
 
             GameHUD.Instance.AddScore(10);
